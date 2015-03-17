@@ -11,11 +11,15 @@ FROM haskell:7.8
 MAINTAINER Chris Kilding <chris@chriskilding.com>
 
 # Add current repo contents
-ADD . /usr/src/app
-WORKDIR /usr/src/app
+# Mirror the workdir structure suggested from the README,
+# but we cannot use relative paths in a Dockerfile ADD command,
+# so must use the absolute /usr top level directory.
+ADD . /usr/bin/ghc-ios-scripts
+WORKDIR /usr/bin/ghc-ios-scripts
 
 # Add the project directory to the path
-ENV PATH /usr/src/app/ghc-ios-scripts:$PATH
+RUN echo -e "\nPATH=/usr/bin/ghc-ios-scripts:"'$PATH' >> ~/.profile
+RUN PATH=/usr/bin/ghc-ios-scripts:$PATH
 
 # Run the installer
 RUN ./installGHCiOS.sh
