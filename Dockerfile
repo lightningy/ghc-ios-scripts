@@ -21,6 +21,10 @@ WORKDIR /usr/bin/ghc-ios-scripts
 RUN echo -e "\nPATH=/usr/bin/ghc-ios-scripts:"'$PATH' >> ~/.profile
 RUN PATH=/usr/bin/ghc-ios-scripts:$PATH
 
+# Need CURL on the system for the script to work
+RUN apt-get update
+RUN apt-get -y install curl
+
 # Run the installer
 RUN ./installGHCiOS.sh
 
