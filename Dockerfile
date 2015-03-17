@@ -25,6 +25,14 @@ RUN PATH=/usr/bin/ghc-ios-scripts:$PATH
 RUN apt-get update
 RUN apt-get -y install curl
 
+# Get LLVM 3.0 for the target platform
+# On the Haskell Docker base image (which is Debian Wheezy based)
+# we need the Debian version of clang+llvm
+RUN curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-linux-debian.tar.gz   
+RUN tar xvf clang+llvm-3.0-x86_64-linux-debian.tar.gz
+RUN mv clang+llvm-3.0-x86_64-linux-debian /usr/local/clang-3.0
+RUN rm clang+llvm-3.0-x86_64-linux-debian.tar.gz
+
 # Run the installer
 RUN ./installGHCiOS.sh
 
