@@ -14,6 +14,6 @@ ADD . /usr/src/app
 
 WORKDIR /usr/src/app
 
-RUN installGHCiOS.sh
+RUN ./installGHCiOS.sh
 
 CMD ["ghc-ios"]
