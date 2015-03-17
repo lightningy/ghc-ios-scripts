@@ -1,14 +1,19 @@
 language: objective-c
 
-# Get Cabal and LLVM 3.0 before the script
+# Get Cabal
+# Get LLVM 3.0
+# Add to the PATH
 before_install:
   - brew install ghc cabal-install
+  - echo -e "\nPATH=`pwd`:"'$PATH' >> ~/.profile
+  - PATH=`pwd`:$PATH
   - curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
   - tar xvf clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
   - mv clang+llvm-3.0-x86_64-apple-darwin11 /usr/local/clang-3.0
   - rm clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
 
-install: ./installGHCiOS.sh
+# Due to PATH alterations the preceding ./ is in theory unnecessary.
+install: installGHCiOS.sh
 
 # Try compiling a hello world Haskell file
 # to see if ghc-ios is working.
