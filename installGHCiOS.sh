@@ -4,10 +4,17 @@ cd /tmp
 
 if [[ ! -f /usr/local/clang-3.0/bin/llc ]]; then
     echo "Downloading LLVM 3.0..."
-    curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
-    tar xvf clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
-    mv clang+llvm-3.0-x86_64-apple-darwin11 /usr/local/clang-3.0
-    rm clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
+    
+    # On the Haskell Docker base image (which is Debian Wheezy based)
+    # we need the Debian version of clang+llvm
+    curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-linux-debian.tar.gz
+    
+    # The OSX version would have been
+    # curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
+    
+    tar xvf clang+llvm-3.0-x86_64-linux-debian.tar.gz
+    mv clang+llvm-3.0-x86_64-linux-debian /usr/local/clang-3.0
+    rm clang+llvm-3.0-x86_64-linux-debian.tar.gz
 fi
 
 
