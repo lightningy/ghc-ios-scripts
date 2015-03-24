@@ -1,5 +1,6 @@
 language: objective-c
 
+# Remove homebrew gcc to see if this stops make scripts using it
 # Get Cabal
 # Get LLVM 3.0
 # Add to the PATH
@@ -7,6 +8,7 @@ before_install:
   - which gcc
   - which g++
   - brew info gcc
+  - brew uninstall gcc
   - brew install ghc cabal-install
   - echo -e "\nPATH=`pwd`:"'$PATH' >> ~/.profile
   - PATH=`pwd`:$PATH
