@@ -5,10 +5,15 @@ language: objective-c
 # Get LLVM 3.0
 # Add to the PATH
 before_install:
+  - echo "Before removing gcc"
   - which gcc
   - which g++
   - brew info gcc
-  - brew uninstall gcc
+  - brew uninstall --force gcc
+  - echo "After removing gcc"
+  - which gcc
+  - which g++
+  - echo $CXX
   - brew install ghc cabal-install
   - echo -e "\nPATH=`pwd`:"'$PATH' >> ~/.profile
   - PATH=`pwd`:$PATH
