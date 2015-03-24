@@ -6,6 +6,7 @@ language: objective-c
 before_install:
   - which gcc
   - which g++
+  - brew info gcc
   - brew install ghc cabal-install
   - echo -e "\nPATH=`pwd`:"'$PATH' >> ~/.profile
   - PATH=`pwd`:$PATH
