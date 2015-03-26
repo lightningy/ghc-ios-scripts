@@ -5,8 +5,10 @@ language: objective-c
 # Get LLVM 3.0
 # Add to the PATH
 before_install:
+  - pwd
   - brew install ghc cabal-install
-  - rm ~/.cabal/config
+  - cat travis/config
+  - sed -i '' '/jobs: $ncpus/d' ~/.cabal/config
   - echo -e "\nPATH=`pwd`:"'$PATH' >> ~/.profile
   - PATH=`pwd`:$PATH
   - curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
