@@ -1,20 +1,12 @@
 language: objective-c
-
-# Remove homebrew gcc to see if this stops make scripts using it
+ 
 # Get Cabal
+# Remove the cabal config containing $ncpus a la readme
 # Get LLVM 3.0
 # Add to the PATH
 before_install:
-  - echo "Before removing gcc"
-  - which gcc
-  - which g++
-  - brew info gcc
-  - brew uninstall --force gcc
-  - echo "After removing gcc"
-  - which gcc
-  - which g++
-  - echo $CXX
   - brew install ghc cabal-install
+  - rm ~/.cabal/config
   - echo -e "\nPATH=`pwd`:"'$PATH' >> ~/.profile
   - PATH=`pwd`:$PATH
   - curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
