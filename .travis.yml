@@ -9,6 +9,8 @@ before_install:
   - pwd
   - brew install ghc cabal-install
   - cabal update
+  - cat /Users/travis/.cabal/config
+  - cat ~/.cabal/config
   - sed -i '' '/jobs: $ncpus/d' ~/.cabal/config
   - echo -e "\nPATH=`pwd`:"'$PATH' >> ~/.profile
   - PATH=`pwd`:$PATH
