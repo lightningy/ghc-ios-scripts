@@ -1,14 +1,15 @@
 language: objective-c
  
 # Get Cabal
+# Trigger creation of ~/.cabal/config by running a cabal command
 # Remove the cabal config containing $ncpus a la readme
 # Get LLVM 3.0
 # Add to the PATH
 before_install:
   - pwd
   - brew install ghc cabal-install
-  - mkdir -p ~/.cabal
-  - cp .travis/cabal-config ~/.cabal/config
+  - cabal update
+  - sed -i '' '/jobs: $ncpus/d' ~/.cabal/config
   - echo -e "\nPATH=`pwd`:"'$PATH' >> ~/.profile
   - PATH=`pwd`:$PATH
   - curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
