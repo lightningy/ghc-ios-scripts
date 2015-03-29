@@ -10,7 +10,7 @@ before_install:
   - brew install ghc cabal-install
   - cabal update
   - cat ~/.cabal/config
-  - sed -i "" "/jobs: $ncpus/d" ~/.cabal/config
+  - "sed -i '' '/jobs: $ncpus/d' ~/.cabal/config"
   - cat ~/.cabal/config
   - echo -e "\nPATH=`pwd`:"'$PATH' >> ~/.profile
   - cat ~/.profile
