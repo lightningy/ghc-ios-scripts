@@ -2,10 +2,10 @@
 
 cd /tmp
 
-if [[ ! -f llvm-gcc ]]; then
+command -v clang >/dev/null 2>&1 || {
     echo "ERROR: LLVM 3.0 or 3.2+ must be installed on your platform to proceed."
     exit 1
-fi
+}
 
 
 echo "Downloading GHC for iOS devices..."
