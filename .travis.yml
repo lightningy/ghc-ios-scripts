@@ -13,6 +13,11 @@ before_install:
   - pwd
   - sw_vers
   - brew update
+  - brew install llvm --with-clang
+  - ls -l /usr/local/opt/llvm/bin
+  - ls -l /usr/local/opt/llvm/share/llvm
+  - which clang
+  - which llc
   - brew install ghc cabal-install
   - cabal update
   - cat ~/.cabal/config
