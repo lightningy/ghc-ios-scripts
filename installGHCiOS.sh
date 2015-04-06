@@ -2,8 +2,8 @@
 
 cd /tmp
 
-if [[ ! -f /usr/local/clang-3.0/bin/llc ]]; then
-    echo "ERROR: LLVM 3.0 must be installed on your platform to proceed."
+if [[ ! -f llvm-gcc ]]; then
+    echo "ERROR: LLVM 3.0 or 3.2+ must be installed on your platform to proceed."
     exit 1
 fi
 
