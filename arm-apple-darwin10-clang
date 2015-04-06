@@ -2,7 +2,7 @@
 
 TARGET_PLATFORM=`xcrun --show-sdk-path --sdk iphoneos`
 TARGET_GCC=`xcrun -f clang`
-TARGET_CFLAGS="-isysroot $TARGET_PLATFORM -miphoneos-version-min=7.0 -mmacosx-version-min=10.9"
+TARGET_CFLAGS="-isysroot $TARGET_PLATFORM -miphoneos-version-min=7.0"
 
 args=$@
 
