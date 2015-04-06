@@ -10,6 +10,7 @@ language: objective-c
 before_install:
   - pwd
   - sw_vers
+  - brew update
   - brew install ghc cabal-install
   - cabal update
   - cat ~/.cabal/config
