@@ -2,12 +2,6 @@
 
 cd /tmp
 
-command -v clang >/dev/null 2>&1 || {
-    echo "ERROR: LLVM 3.0 or 3.2+ must be installed on your platform to proceed."
-    exit 1
-}
-
-
 echo "Downloading GHC for iOS devices..."
 
 curl -OL https://www.haskell.org/ghc/dist/7.8.3/ghc-7.8.3-arm-apple-ios.tar.xz
@@ -24,8 +18,6 @@ find . -type f -not -name .DS_Store -not -name "*.a" -print0 | xargs -0 sed -i '
 # Fix the settings file to point to the right scripts and clang versions
 sed -i '' 's|/usr/bin/gcc|arm-apple-darwin10-clang|g' settings
 sed -i '' 's|/usr/bin/ld|arm-apple-darwin10-ld|g' settings
-sed -i '' 's|"opt"|"/usr/local/clang-3.0/bin/opt"|g' settings
-sed -i '' 's|"llc"|"/usr/local/clang-3.0/bin/llc"|g' settings
 make install
 cd ..
 rm -r ghc-7.8.3-arm
@@ -46,8 +38,6 @@ find . -type f -not -name .DS_Store -not -name "*.a" -print0 | xargs -0 sed -i '
 # Fix the settings file to point to the right scripts and clang versions
 sed -i '' 's|/usr/bin/gcc|i386-apple-darwin11-clang|g' settings
 sed -i '' 's|/usr/bin/ld|i386-apple-darwin11-ld|g' settings
-sed -i '' 's|"opt"|"/usr/local/clang-3.0/bin/opt"|g' settings
-sed -i '' 's|"llc"|"/usr/local/clang-3.0/bin/llc"|g' settings
 make install
 cd ..
 rm -r ghc-7.8.3-i386
