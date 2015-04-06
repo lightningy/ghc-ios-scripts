@@ -7,6 +7,8 @@ language: objective-c
 # Get LLVM 3.0
 # Add to the PATH
 # Try compiling the hello world example with the baseline x64-class GHC
+# (and check that it has the LLVM back end, GCC back end is no good
+# for cross compiling to ARM)
 before_install:
   - pwd
   - sw_vers
@@ -26,7 +28,7 @@ before_install:
   - tar xvf clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
   - mv clang+llvm-3.0-x86_64-apple-darwin11 /usr/local/clang-3.0
   - rm clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
-  - ghc -v .travis/helloworld.hs
+  - ghc -fllvm -v .travis/helloworld.hs
 
 # Due to PATH alterations the preceding ./ is in theory unnecessary.
 install: installGHCiOS.sh
