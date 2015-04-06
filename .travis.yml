@@ -7,7 +7,7 @@ language: objective-c
 # Add to the PATH
 before_install:
   - pwd
-  - brew install ghc cabal-install
+  - brew install cabal-install
   - cabal update
   - cat ~/.cabal/config
   - "sed -i '' '/jobs: $ncpus/d' ~/.cabal/config"
@@ -16,7 +16,6 @@ before_install:
   - cat ~/.profile
   - PATH=`pwd`:$PATH
   - echo $PATH
-  - ghc --version
   - cabal -V
   - curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
   - tar xvf clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
