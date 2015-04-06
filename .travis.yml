@@ -6,10 +6,11 @@ language: objective-c
 # Remove the cabal config containing $ncpus a la readme
 # Get LLVM 3.0
 # Add to the PATH
+# Try compiling the hello world example with the baseline x64-class GHC
 before_install:
   - pwd
   - sw_vers
-  - brew install cabal-install
+  - brew install ghc cabal-install
   - cabal update
   - cat ~/.cabal/config
   - "sed -i '' '/jobs: $ncpus/d' ~/.cabal/config"
@@ -18,15 +19,17 @@ before_install:
   - cat ~/.profile
   - PATH=`pwd`:$PATH
   - echo $PATH
+  - ghc --version
   - cabal -V
   - curl -O http://llvm.org/releases/3.0/clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
   - tar xvf clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
   - mv clang+llvm-3.0-x86_64-apple-darwin11 /usr/local/clang-3.0
   - rm clang+llvm-3.0-x86_64-apple-darwin11.tar.gz
+  - ghc -v .travis/helloworld.hs
 
 # Due to PATH alterations the preceding ./ is in theory unnecessary.
 install: installGHCiOS.sh
 
 # Try compiling a hello world Haskell file
 # to see if ghc-ios is working.
-script: ghc-ios .travis/helloworld.hs
+script: ghc-ios -v .travis/helloworld.hs
