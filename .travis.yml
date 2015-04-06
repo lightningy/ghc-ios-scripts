@@ -1,5 +1,6 @@
 language: objective-c
  
+# Log build system information (illegal instruction errors are fickle)
 # Get Cabal
 # Trigger creation of ~/.cabal/config by running a cabal command
 # Remove the cabal config containing $ncpus a la readme
@@ -7,6 +8,7 @@ language: objective-c
 # Add to the PATH
 before_install:
   - pwd
+  - sw_vers
   - brew install cabal-install
   - cabal update
   - cat ~/.cabal/config
