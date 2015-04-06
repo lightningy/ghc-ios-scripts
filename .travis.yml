@@ -25,7 +25,7 @@ before_install:
   - ghc --version
   - cabal -V
   - llvm-gcc --version
-  - ghc -fllvm -v .travis/helloworld.hs
+  - ghc -v .travis/helloworld.hs
 
 # Due to PATH alterations the preceding ./ is in theory unnecessary.
 install: installGHCiOS.sh
